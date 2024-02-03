@@ -177,7 +177,7 @@ def hangman(secret_word):
     letters_guessed=[]
     print("Welcome to the game Hangman !")
     print(f"I am thinking of a word that is {len(secret_word)} letters long. ")
-    num_guess = 6
+    num_guess = 9
     num_warn = 3
     print("------------------------")
     print(f"You have {num_guess} guesses left.")
@@ -246,9 +246,9 @@ def match_with_gaps(my_word, other_word):
     my_word = my_word.replace(" ","")
     other_word = other_word.replace(" ","")
     for i in my_word:
-        j = my_word.index(i,k)
+        j = my_word.index(i,k)   #### k variable ensures no precedent appearance of a letter taken as index
         k +=1
-        if i.isalpha(): 
+        if i.isalpha():                #### THIS PART IS TO ENSURE THAT THERE IS NO MATCHES LIKE "A_PLE == "APPLE"
             if i == other_word[j] and my_word.count(i) == other_word.count(i):         
                 pass
             else:
@@ -275,15 +275,13 @@ def show_possible_matches(my_word):
     my_word = get_guessed_word(secret_word, letters_guessed)
     k = 0
     my_word = my_word.replace(" ","")
-    print("Hints are here: ")
-    for i in my_word:
-        j = my_word.index(i,k)
-        k += 1
-        for word in wordlist:
-            if match_with_gaps(my_word,word):
-                print(word, end=" ")
-            else:
-                pass
+    print("Hints are here ╰(°ㅂ°)╯ : ")
+
+    for word in wordlist:
+        if match_with_gaps(my_word,word):
+            print(word, end=" ")
+        else:
+            pass
     print("\n")   
 
 
@@ -335,7 +333,7 @@ def hangman_with_hints(secret_word):
         if letter is not False and num_guess > 0:
             letters_guessed.append(letter)
             if is_word_guessed(secret_word,letters_guessed):
-                print("Congratulations, you've won ╰(°ㅂ°)╯! Secret word was: ", secret_word)
+                print("Congratulations, you've won ✧⋆٩(ˊᗜˋ )و ♡✧! Secret word was: ", secret_word)
                 break
             elif letter == "*":
                 show_possible_matches(secret_word)
