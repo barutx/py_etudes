@@ -36,3 +36,5 @@ def okunus_ile_okunus_belirle(sayi):
 
 sayi = int(input("Lütfen bir sayı girin: "))
 print(f"Sayı = {sayi}'{okunus_ile_okunus_belirle(sayi)}") ## kesme işareti 
+
+
