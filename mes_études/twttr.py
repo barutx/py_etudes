@@ -6,16 +6,14 @@ Created on Thu Jan 18 12:21:41 2024
 @author: barut
 """
 def main():
-    remove_vowel()
+    print(f"Output: {remove_vowel()}")
 
-def remove_vowel():
-    x=(input("Input: "))
+def remove_vowel(word='selam'):
     vowel=["a","e","o","i","u"]
-    for _ in x:
+    for _ in word:
         if _ in vowel:
-            x=x.replace(_,"")
-        else:True
-    print("Output:",x)
+            word = word.replace(_,"")
+    return word
 
 if __name__ == '__main__':
     main()

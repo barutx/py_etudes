@@ -11,25 +11,10 @@ import math
 import random
 import string
 
-global figlet
-figlet = """
 
-▓█████  ███▄    █ ▓█████▄ 
-▓█   ▀  ██ ▀█   █ ▒██▀ ██▌
-▒███   ▓██  ▀█ ██▒░██   █▌
-▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌
-░▒████▒▒██░   ▓██░░▒████▓ 
-░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ 
- ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒ 
-   ░      ░   ░ ░  ░ ░  ░ 
-   ░  ░         ░    ░    
-                   ░      
-
-
-"""
 VOWELS = 'aeiou'
 CONSONANTS = 'bcdfghjklmnpqrstvwxyz'
-HAND_SIZE = 8
+HAND_SIZE = 9
 
 SCRABBLE_LETTER_VALUES = {
     'a': 1, 'b': 3, 'c': 3, 'd': 2, 'e': 1, 'f': 4, 'g': 2, 'h': 4, 'i': 1, 'j': 8, 'k': 5, 'l': 1, 'm': 3, 'n': 1, 'o': 1, 'p': 3, 'q': 10, 'r': 1, 's': 1, 't': 1, 'u': 1, 'v': 4, 'w': 4, 'x': 8, 'y': 4, 'z': 10
@@ -161,15 +146,14 @@ def deal_hand(n):
     """
     
     hand={}
-    num_vowels = int(math.ceil(n / 3))
+    joker = '*'
 
-    for i in range(num_vowels-1):
-        x = random.choice(VOWELS)
-        hand[x] = hand.get(x, 0) + 1
-    hand['*'] = 1
-    for i in range(num_vowels, n):    
-        x = random.choice(CONSONANTS)
-        hand[x] = hand.get(x, 0) + 1    
+    for i in range(n-1):
+        x = random.choice(VOWELS+CONSONANTS)
+        hand[x] = hand.get(x, 0) + 1  
+    keys = list(hand.keys())    
+    asterix_index = random.choice(keys)
+    hand[joker] = hand.pop(asterix_index)     
     return hand
 
 #
@@ -467,6 +451,22 @@ def play_game(word_list):
 #
 if __name__ == '__main__':
     word_list = load_words()
+    global figlet
+    figlet = """
+
+    ▓█████  ███▄    █ ▓█████▄ 
+    ▓█   ▀  ██ ▀█   █ ▒██▀ ██▌
+    ▒███   ▓██  ▀█ ██▒░██   █▌
+    ▒▓█  ▄ ▓██▒  ▐▌██▒░▓█▄   ▌
+    ░▒████▒▒██░   ▓██░░▒████▓ 
+    ░░ ▒░ ░░ ▒░   ▒ ▒  ▒▒▓  ▒ 
+    ░ ░  ░░ ░░   ░ ▒░ ░ ▒  ▒ 
+    ░      ░   ░ ░  ░ ░  ░ 
+    ░  ░         ░    ░    
+                    ░      
+
+
+    """
     play_game(word_list)
 
 

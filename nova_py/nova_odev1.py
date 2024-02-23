@@ -96,28 +96,28 @@
 ##### DÖNGÜLER
 
 ## PROBLEM 1 
-# sayi = int(input("Bir sayı giriniz: "))
+sayi = int(input("Bir sayı giriniz: "))
 
-# bolenler_toplami =0
-# for i in range(1,sayi):
-#     if sayi % i == 0:
-#         bolenler_toplami += i
-# if bolenler_toplami == sayi:
-#     print(f"{sayi} bir mükemmel sayıdır.")
-# else:
-#     print(f"{sayi} bir mükemmel sayı değildir.")
+bolenler_toplami =0
+for i in range(1,sayi):
+    if sayi % i == 0:
+        bolenler_toplami += i
+if bolenler_toplami == sayi:
+    print(f"{sayi} bir mükemmel sayıdır.")
+else:
+    print(f"{sayi} bir mükemmel sayı değildir.")
 
 
 #### PROBLEM 2 
-# sayi = input("Bir sayı giriniz: ")
-# basamaklar = list(sayi)
-# toplam = 0
-# for i in basamaklar:
-#     toplam += int(i)**len(sayi)
-# if toplam == int(sayi):
-#     print(f"{sayi} bir Armstrong sayısıdır.")
-# else:
-#     print(f"{sayi} bir Armstrong sayısı değildir.")
+sayi = input("Bir sayı giriniz: ")
+basamaklar = list(sayi)
+toplam = 0
+for i in basamaklar:
+    toplam += int(i)**len(sayi)
+if toplam == int(sayi):
+    print(f"{sayi} bir Armstrong sayısıdır.")
+else:
+    print(f"{sayi} bir Armstrong sayısı değildir.")
 
 ## PROBLEM 3 
 
